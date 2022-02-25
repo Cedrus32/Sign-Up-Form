@@ -1,0 +1,150 @@
+/* GLOBAL ========================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    padding: 0px; margin: 0px;
+
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-size: 100%;
+    font: inherit;
+
+    vertical-align: baseline;
+}
+
+
+/* SECTIONS ========================= */
+
+/* render `main` element consistently in IE */
+
+main {
+    display: block;
+}
+
+/* correct font size, margin on `h1` elements */
+/* within `section` and `article` contexts */
+/* in Chrome, Firefox, and Safari */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+/* standardize margins for `header` elements across broswers */
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* standardize margins for `p` elements across browsers */
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+
+/* TEXT-LEVEL SEMANTICS ========================= */
+
+/* remove gray bg on active links in IE 10 */
+
+a {
+    background-color: transparent;
+}
+
+/* add correct font size in all browsers */
+
+small {
+    font-size: 80%;
+}
+
+
+/* EMBEDDED CONTENT ========================= */
+
+/* remove border on images inside links in IE 10 */
+
+img {
+    border-style: none;
+}
+
+
+/* FORMS ========================= */
+
+/* 1. change font styles in all browsers */
+/* 2. remove margin in Firefox and Safari */
+
+button,
+input {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+}
+
+/* show overflow in IE, Edge */
+
+button,
+input {
+    overflow: visible;
+}
+
+/* remove inheritance of text transform in Edge, Firefox, IE */
+
+button {
+    text-transform: none;
+}
+
+/* correct the inability to style clickable types in iOS, Safari */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+/* remove inner border, padding in Firefox */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+/* restore focus styles unset by previous rule ^^ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+/* correct padding in Firefox */
+
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+}
+  
+/* 1. correct text wrapping in Edge, IE */
+/* 2. correct color inheritance from `fieldset` elements in IE */
+/* 3. remove padding so devs aren't caught out when they zero-out */
+/*    `fieldset`elements in all browsers */
+
+legend {
+    box-sizing: border-box; /* 1 */
+    color: inherit; /* 2 */
+    display: table; /* 1 */
+    max-width: 100%; /* 1 */
+    padding: 0; /* 3 */
+    white-space: normal; /* 1 */
+}
