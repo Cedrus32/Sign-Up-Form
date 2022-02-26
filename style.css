@@ -73,19 +73,50 @@ small, footer a {
 /* CONTENT STYLING */
 /* --------------- */
 
-main {
-    /* border: 1px solid blue; */
+.about, .account-action {
+    background-color: #F9FAFB;
+}
+
+.about .content {
+    padding: 40px 20px 40px; margin: 0px;
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
 }
 
 .about p {
-    /* border: 1px solid blue; */
+    padding: 0px; margin: 0px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .01rem;
+    line-height: 1.2rem;
+}
+
+.form .content {
+    padding: 20px 20px 20px;
+    position: relative; z-index: 1;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 em {
     font-style: italic;
 }
 
+/* ------------ */
+/* FORM STYLING */
+/* ------------ */
+
+h2 {
+    padding: 0px; margin: 0px;
+    font-size: 1.1rem;
+}
+
+form {
+    padding: 20px 0px 0px; margin: 0px;
+}
+
 fieldset {
+    padding: 0px; margin: 0px;
     border: none;
 }
 
@@ -93,6 +124,51 @@ legend {
     display: none;
 }
 
-.account-action p {
-    /* border: 1px solid green; */
+fieldset div {
+    display: flex;
+    flex-flow: column;
+    padding: 5px 0px;
+}
+
+label {
+    padding: 0px 0px 2px; margin: 0px;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    white-space:pre-wrap;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='password'] {
+    border: 1px solid rgb(228, 231, 234);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* -------------- */
+/* ACTION STYLING */
+/* -------------- */
+
+.account-action .content {
+    padding: 30px 20px; margin: 0px;
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+}
+
+button {
+    padding: 10px; margin: 0px;
+    background-color: #6698A6;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+.account-action a {
+    color: #6698A6;
+    text-decoration: none;
+    font-weight: bold;
 }

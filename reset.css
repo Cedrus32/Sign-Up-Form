@@ -35,20 +35,6 @@ h1 {
     margin: 0.67em 0;
 }
 
-/* standardize margins for `header` elements across broswers */
-
-h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
-
-/* standardize margins for `p` elements across browsers */
-
-p {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
 
 /* TEXT-LEVEL SEMANTICS ========================= */
 
@@ -120,12 +106,6 @@ button:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
     outline: 1px dotted ButtonText;
-}
-
-/* correct padding in Firefox */
-
-fieldset {
-    padding: 0.35em 0.75em 0.625em;
 }
   
 /* 1. correct text wrapping in Edge, IE */
