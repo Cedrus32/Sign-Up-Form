@@ -27,12 +27,11 @@ main {
     display: block;
 }
 
-/* correct font size, margin on `h1` elements */
+/* correct margin on `h1` elements */
 /* within `section` and `article` contexts */
 /* in Chrome, Firefox, and Safari */
 
 h1 {
-    font-size: 2em;
     margin: 0.67em 0;
 }
 
@@ -57,12 +56,6 @@ p {
 
 a {
     background-color: transparent;
-}
-
-/* add correct font size in all browsers */
-
-small {
-    font-size: 80%;
 }
 
 

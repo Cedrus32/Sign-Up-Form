@@ -1,4 +1,98 @@
+/* -------------- */
+/* GLOBAL STYLING */
+/* -------------- */
+
+* {
+    font-family: 'Helvetica', Verdana, Tahoma, sans-serif;
+    font-size: 1rem;
+}
+
 body {
-    background-color: black;
+    background-color: white;
+    color: black;
+}
+
+/* --------------- */
+/* SIDEBAR STYLING */
+/* --------------- */
+
+@font-face {
+    font-family: 'Norse Bold';
+    src: url(assets/Norse-Bold.otf);
+}
+
+aside,
+header {
+    display: flex;
+}
+
+aside {
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 250px;
+    width: 100vw;
+    background-image: url('assets/header-small-wide.png');
+    background-position: center;
+    /* border: solid 1px red; */
+}
+
+header {
+    position: relative;
+    top: 40px;
+    justify-content: center;
+    align-items: center;
+    width: inherit; height: 170px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+header img {
+    height: inherit;
+    padding: 10px;
+}
+
+h1 {
+    margin: 25px 0px 0px 0px;
+    font-family: 'Norse Bold', 'Times New Roman', Times, serif;
+    font-size: 125px;
+    color: white;
+}
+
+footer {
+    /* border: 1px solid red; */
+    position: relative;
+    top: 60px;
+}
+
+small, footer a {
+    font-size: 10px;
     color: lightgrey;
+}
+
+/* --------------- */
+/* CONTENT STYLING */
+/* --------------- */
+
+main {
+    /* border: 1px solid blue; */
+}
+
+.about p {
+    /* border: 1px solid blue; */
+}
+
+em {
+    font-style: italic;
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    display: none;
+}
+
+.account-action p {
+    /* border: 1px solid green; */
 }
