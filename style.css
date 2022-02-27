@@ -35,7 +35,7 @@ aside {
 header {
     justify-content: center;
     align-items: center;
-    width: inherit; height: 170px;
+    width: 100%; height: 170px;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -238,10 +238,10 @@ button {
     }
     
     aside {
-        height: 718px; width: 575px;
+        height: 718px; width: 50%;
         background-image: url('./assets/header-lrg-tall.jpg');
         background-position: center;
-        background-size: 575px auto;
+        background-size: cover;
     }
 
     header {
