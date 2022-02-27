@@ -18,7 +18,7 @@ body {
 
 @font-face {
     font-family: 'Norse Bold';
-    src: url(assets/Norse-Bold.otf);
+    src: url(./assets/Norse-Bold.otf);
 }
 
 aside,
@@ -33,8 +33,6 @@ aside {
 }
 
 header {
-    position: relative;
-    top: 40px;
     justify-content: center;
     align-items: center;
     width: inherit; height: 170px;
@@ -51,12 +49,6 @@ h1 {
     font-family: 'Norse Bold', 'Times New Roman', Times, serif;
     font-size: 125px;
     color: white;
-}
-
-footer {
-    /* border: 1px solid red; */
-    position: relative;
-    top: 60px;
 }
 
 small, footer a {
@@ -172,21 +164,44 @@ button {
 /* TABLET STYLING */
 /* -------------- */
 
-@media only screen and (max-device-width: 785px) {
+
+/* MOBILE ------- */
+@media only screen and (max-device-width: 500px) {
     aside {
         min-height: 250px; width: 100vw;
-        background-image: url('assets/header-sml-wide.jpeg');
+        background-image: url('./assets/header-sml-wide.jpeg');
         background-position: center;
         background-size: auto 250px;
     }
+
+    header {
+        position: relative;
+        top: 40px;
+    }
+
+    footer {
+        position: relative;
+        top: 60px;
+    }
 }
 
-@media only screen and (min-device-width: 786px) and (max-device-width: 1024px) {
+/* TABLETS ------ */
+@media only screen and (min-device-width: 501px) and (max-device-width: 1024px) {
     aside {
         min-height: 250px; width: 100vw;
-        background-image: url('assets/header-med-wide.jpeg');
+        background-image: url('./assets/header-med-wide.jpeg');
         background-position: center;
         background-size: auto 250px;
+    }
+
+    header {
+        position: relative;
+        top: 40px;
+    }
+
+    footer {
+        position: relative;
+        top: 60px;
     }
 
     fieldset {
@@ -199,6 +214,43 @@ button {
     }
 
     button {
-        width: 25%;
+        width: 246px;
+    }
+}
+
+/* PCS ---------- */
+@media only screen and (min-device-width: 1025px) {
+    .containter {
+        display: flex;
+    }
+    
+    aside {
+        height: 718px; width: 575px;
+        background-image: url('./assets/header-lrg-tall.jpg');
+        background-position: center;
+        background-size: 575px auto;
+    }
+
+    header {
+        position: relative;
+        top: 175px;
+    }
+
+    footer {
+        position: relative;
+        top: 528px;
+    }
+
+    fieldset {
+        display: flex;
+        gap: 20px;
+    }
+
+    fieldset div {
+        width: 50%;
+    }
+
+    button {
+        width: 246px;
     }
 }
