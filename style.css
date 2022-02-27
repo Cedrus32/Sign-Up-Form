@@ -30,11 +30,6 @@ aside {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 250px;
-    width: 100vw;
-    background-image: url('assets/header-small-wide.png');
-    background-position: center;
-    /* border: solid 1px red; */
 }
 
 header {
@@ -160,7 +155,7 @@ input[type='password'] {
 
 button {
     padding: 10px; margin: 0px;
-    background-color: #6698A6;
+    background-color: #7C8A67;
     border: none;
     border-radius: 8px;
     color: white;
@@ -168,7 +163,20 @@ button {
 }
 
 .account-action a {
-    color: #6698A6;
+    color: #7C8A67;
     text-decoration: none;
     font-weight: bold;
+}
+
+/* -------------- */
+/* TABLET STYLING */
+/* -------------- */
+
+@media only screen and (max-device-width: 785px) {
+    aside {
+        min-height: 250px; width: 100vw;
+        background-image: url('assets/header-sml-wide.jpeg');
+        background-position: center;
+        background-size: auto 250px;
+    }
 }
