@@ -140,6 +140,16 @@ input[type='password'] {
     padding: 5px;
 }
 
+input:focus {
+    outline: none;
+    border: 1px solid blue;
+}
+
+input.error {
+    outline: none;
+    border: 1px solid red;
+}
+
 /* -------------- */
 /* ACTION STYLING */
 /* -------------- */
@@ -189,6 +199,13 @@ button {
         position: relative;
         top: 60px;
     }
+
+    form,
+    fieldset {
+        display: flex;
+        flex-flow: column;
+        gap: 15px;
+    }
 }
 
 /* TABLETS ------ */
@@ -208,6 +225,12 @@ button {
     footer {
         position: relative;
         top: 60px;
+    }
+
+    form {
+        display: flex;
+        flex-flow: column;
+        gap: 15px;
     }
 
     fieldset {
@@ -253,6 +276,12 @@ button {
     footer {
         position: relative;
         top: 528px;
+    }
+
+    form {
+        display: flex;
+        flex-flow: column;
+        gap: 15px;
     }
 
     fieldset {
