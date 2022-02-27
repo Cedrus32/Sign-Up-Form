@@ -60,7 +60,9 @@ small, footer a {
 /* CONTENT STYLING */
 /* --------------- */
 
-.about, .account-action {
+.container,
+.about,
+.account-action {
     background-color: #F9FAFB;
 }
 
@@ -83,6 +85,10 @@ small, footer a {
     padding: 20px 20px 20px;
     position: relative; z-index: 1;
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+    background-color: white;
 }
 
 em {
@@ -220,7 +226,14 @@ button {
 
 /* PCS ---------- */
 @media only screen and (min-device-width: 1025px) {
-    .containter {
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .container {
         display: flex;
     }
     
