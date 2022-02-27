@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: white;
+    background-color: #11151A;
     color: black;
 }
 
@@ -172,7 +172,7 @@ button {
 
 
 /* MOBILE ------- */
-@media only screen and (max-device-width: 500px) {
+@media only screen and (max-width: 500px) {
     aside {
         min-height: 250px; width: 100vw;
         background-image: url('./assets/header-sml-wide.jpeg');
@@ -192,7 +192,7 @@ button {
 }
 
 /* TABLETS ------ */
-@media only screen and (min-device-width: 501px) and (max-device-width: 1024px) {
+@media only screen and (min-width: 501px) and (max-width: 1024px) {
     aside {
         min-height: 250px; width: 100vw;
         background-image: url('./assets/header-med-wide.jpeg');
@@ -225,7 +225,7 @@ button {
 }
 
 /* PCS ---------- */
-@media only screen and (min-device-width: 1025px) {
+@media only screen and (min-width: 1025px) {
 
     body {
         display: flex;
