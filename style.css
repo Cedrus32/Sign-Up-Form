@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #11151A;
+    background-color: #F9FAFB;
     color: black;
 }
 
@@ -173,9 +173,13 @@ button {
 
 /* MOBILE ------- */
 @media only screen and (max-width: 500px) {
+    body {
+        background-color: ;
+    }
+
     aside {
         min-height: 250px; width: 100vw;
-        background-image: url('./assets/header-sml-wide.jpeg');
+        background-image: url('./assets/header-sml-wide.png');
         background-position: center;
         background-size: auto 250px;
     }
@@ -195,7 +199,7 @@ button {
 @media only screen and (min-width: 501px) and (max-width: 1024px) {
     aside {
         min-height: 250px; width: 100vw;
-        background-image: url('./assets/header-med-wide.jpeg');
+        background-image: url('./assets/header-med-wide.png');
         background-position: center;
         background-size: auto 250px;
     }
@@ -231,6 +235,7 @@ button {
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        background-color: #11151A;
     }
 
     .container {
