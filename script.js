@@ -16,6 +16,11 @@ function checkName() {
     let lnValue = ln.value;
     const fnErrorBox = document.getElementById('first-name-error');
     const lnErrorBox = document.getElementById('last-name-error');
+    const alpha = /[a-zA-Z]+/;
+    let fnAlphTest = alpha.test(fnValue);
+    let lnAlphTest = alpha.test(lnValue);
+    console.log(fnAlphTest);
+    console.log(lnAlphTest);
 
     // clear previous error messages
     fn.classList.remove('error');
@@ -23,25 +28,48 @@ function checkName() {
     fnErrorBox.textContent = '';
     lnErrorBox.textContent = '';
 
-    // compare variables
-    switch (true) {
-        case ((fnValue === '') && (lnValue === '')):
+    // compare values
+    if ((fnValue === '') || (lnValue === '')) {
+        if (fnValue === '') {
             fn.classList.add('error');
+            fnErrorBox.textContent = '* Please Enter First Name';
+        }
+        if (lnValue === '') {
             ln.classList.add('error');
-            fnErrorBox.textContent = 'Please Enter First Name';
-            lnErrorBox.textContent = 'Please Enter Last Name';
-            break;
-        case (fnValue === ''):
+            lnErrorBox.textContent = '* Please Enter Last Name';
+        }
+    } else if ((fnAlphTest === false) || (lnAlphTest === false)) {
+        if (fnAlphTest === false) {
             fn.classList.add('error');
-            fnErrorBox.textContent = 'Please Enter First Name';
-            break;
-        case (lnValue === ''):
+            fnErrorBox.textContent = '* Please Use Letters Only';
+        }
+        if (lnAlphTest === false) {
             ln.classList.add('error');
-            lnErrorBox.textContent = 'Please Enter Last Name';
+            lnErrorBox.textContent = '* Please Use Letters Only';
+        }
     }
 }
 
-// check contact
+// function checkContact () {
+//     // get variables
+//     let email = document.getElementById('email');
+//     let phone = document.getElementById('phone');
+//     let emailValue = email.value;
+//     let phoneValue = phone.value;
+//     const emailErrorBox = document.getElementById('email-error');
+//     const phoneErrorBox = document.getElementById('phone-error');
+
+//     // clear previous error messages
+
+//     // compare variables
+//     switch (true) {
+//         case (() && ()):
+//             break;
+//         case ():
+//             break;
+//         case ();
+//     }
+// }
 
 function checkPassword () {
     // get variables
@@ -74,6 +102,8 @@ function checkPassword () {
             pw1ErrorBox.textContent = '* Password did not match. Please confirm your password.'
             return false;
         case ((pw1 === pw2) && (pw1 !== '') && (pw2 !== '')):
+            pw1.classList.add('correct');
+            pw2.classList.add('correct');
             return true;
     }
 }
@@ -83,5 +113,4 @@ function checkPassword () {
 // --------- //
 
 const button = document.querySelector('button');
-console.log(button);
 button.addEventListener('click', checkForm);
