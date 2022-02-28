@@ -151,6 +151,11 @@ input.error {
     border: 1px solid red;
 }
 
+input.correct {
+    outline: none;
+    border: 1px solid green;
+}
+
 .error-box {
     padding: 0px; margin: 0px;
     width: 100%;

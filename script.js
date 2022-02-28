@@ -10,66 +10,49 @@ function checkForm() {
 
 function checkName() {
     // get variables
-    let fn = document.getElementById('first-name');
-    let ln = document.getElementById('last-name');
-    let fnValue = fn.value;
-    let lnValue = ln.value;
-    const fnErrorBox = document.getElementById('first-name-error');
-    const lnErrorBox = document.getElementById('last-name-error');
-    const alpha = /[a-zA-Z]+/;
-    let fnAlphTest = alpha.test(fnValue);
-    let lnAlphTest = alpha.test(lnValue);
-    console.log(fnAlphTest);
-    console.log(lnAlphTest);
+    let fullName = document.querySelectorAll('fieldset.name input');
+    let fullNameErrorBoxes = document.querySelectorAll('fieldset.name div.error-box');
+    const alpha = /^[A-Z][a-z '-]?[a-z]{1,30}$/;
 
     // clear previous error messages
-    fn.classList.remove('error');
-    ln.classList.remove('error');
-    fnErrorBox.textContent = '';
-    lnErrorBox.textContent = '';
+    for (let i = 0; i <= 1; i++) {
+        let name = fullName[i];
+        let nameError = fullNameErrorBoxes[i];
+        name.classList = '';
+        nameError.textContent = '';
+    }
 
-    // compare values
-    if ((fnValue === '') || (lnValue === '')) {
-        if (fnValue === '') {
-            fn.classList.add('error');
-            fnErrorBox.textContent = '* Please Enter First Name';
-        }
-        if (lnValue === '') {
-            ln.classList.add('error');
-            lnErrorBox.textContent = '* Please Enter Last Name';
-        }
-    } else if ((fnAlphTest === false) || (lnAlphTest === false)) {
-        if (fnAlphTest === false) {
-            fn.classList.add('error');
-            fnErrorBox.textContent = '* Please Use Letters Only';
-        }
-        if (lnAlphTest === false) {
-            ln.classList.add('error');
-            lnErrorBox.textContent = '* Please Use Letters Only';
+    // check values
+    for (let i = 0; i <= 1; i++) {
+        let name = fullName[i];
+        let nameValue = name.value;
+        let nameTest = alpha.test(nameValue);
+        let nameError = fullNameErrorBoxes[i];
+
+        if (nameValue === '') {
+            name.classList.add('error');
+            if (i === 0) {
+                nameError.textContent = '* Please Enter Your First Name';
+            } else if (i === 1) {
+                nameError.textContent = '* Please Enter Your Last Name';
+            }
+            return false;
+        } else if (nameTest === false) {
+            name.classList.add('error');
+            if (i === 0) {
+                nameError.textContent = '* Please Enter Your First Name';
+            } else if (i === 1) {
+                nameError.textContent = '* Please Enter Your Last Name';
+            }
+            return false;
+        } else if (nameTest === true) {
+            name.classList.add('correct');
+            return true;
         }
     }
 }
 
-// function checkContact () {
-//     // get variables
-//     let email = document.getElementById('email');
-//     let phone = document.getElementById('phone');
-//     let emailValue = email.value;
-//     let phoneValue = phone.value;
-//     const emailErrorBox = document.getElementById('email-error');
-//     const phoneErrorBox = document.getElementById('phone-error');
-
-//     // clear previous error messages
-
-//     // compare variables
-//     switch (true) {
-//         case (() && ()):
-//             break;
-//         case ():
-//             break;
-//         case ();
-//     }
-// }
+// checkContact
 
 function checkPassword () {
     // get variables
@@ -102,8 +85,6 @@ function checkPassword () {
             pw1ErrorBox.textContent = '* Password did not match. Please confirm your password.'
             return false;
         case ((pw1 === pw2) && (pw1 !== '') && (pw2 !== '')):
-            pw1.classList.add('correct');
-            pw2.classList.add('correct');
             return true;
     }
 }
