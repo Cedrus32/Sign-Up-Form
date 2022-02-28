@@ -3,23 +3,38 @@
 // -------------- //
 
 function checkPassword () {
-    let pw1 = document.getElementById('pw').value;
-    let pw2 = document.getElementById('pw-confirm').value;
-    console.log({pw1});
-    console.log({pw2});
+    // get variables
+    let pw1 = document.getElementById('pw');
+    let pw1Value = pw1.value;
+    let pw2 = document.getElementById('pw-confirm');
+    let pw2Value = pw2.value;
 
-    if (pw1 === '') {
-        console.log('[add .error to password inputs]');
-        console.log('Please enter Password');
-    } else if (pw2 === '') {
-        console.log('[add .error to password inputs]');
-        console.log('Please confirm Password')
-    } else if (pw1 !== pw2) {
-        console.log('[add .error to password inputs]');
-        console.log('Password did not match. Please confirm your password.');
-        return false;
-    } else if ((pw1 === pw2) && (pw1 !== '') && (pw2 !== '')) {
-        return true;
+    const pwErrorBox = document.getElementById('pw-error');
+    const pwConfirmErrorBox = document.getElementById('pw-confirm-error');
+
+    // clear previous error messages
+    pw1.classList.remove('error');
+    pw2.classList.remove('error');
+    pwErrorBox.textContent = '';
+    pwConfirmErrorBox.textContent = '';
+
+    // compare variables
+    switch (true) {
+        case (pw1Value === ''):
+            pw1.classList.add('error');
+            pwErrorBox.textContent = '* Please Enter Password'
+            break;
+        case (pw2Value === ''):
+            pw2.classList.add('error');
+            pwConfirmErrorBox.textContent = '* Please Confirm Password'
+            break;
+        case (pw1Value !== pw2Value):
+            pw1.classList.add('error');
+            pw2.classList.add('error');
+            pwErrorBox.textContent = '* Password did not match. Please confirm your password.'
+            return false;
+        case ((pw1 === pw2) && (pw1 !== '') && (pw2 !== '')):
+            return true;
     }
 }
 
