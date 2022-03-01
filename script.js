@@ -4,7 +4,7 @@
 
 function checkForm() {
     checkName();
-    // checkContact();
+    checkContact();
     checkPassword();
 }
 
@@ -12,7 +12,7 @@ function checkName() {
     // get values
     let fullName = document.querySelectorAll('fieldset.name input');
     let fullNameErrorBoxes = document.querySelectorAll('fieldset.name div.error-box');
-    const alpha = /^[A-Z][a-z '-]?[a-z]{1,30}$/;
+    const alphaRegex = /^[A-Z][a-z '-]?[a-z]{1,30}$/;
 
     // clear previous error messages
     for (let i = 0; i <= 1; i++) {
@@ -26,7 +26,7 @@ function checkName() {
     for (let i = 0; i <= 1; i++) {
         let name = fullName[i];
         let nameValue = name.value;
-        let nameTest = alpha.test(nameValue);
+        let nameTest = alphaRegex.test(nameValue);
         let nameError = fullNameErrorBoxes[i];
 
         if (nameValue === '') {
@@ -49,6 +49,41 @@ function checkName() {
     }
 }
 
+//TODO add hint for appropriate phone number && email
+
+function checkContact () {
+    checkEmail();
+    checkPhone();
+}
+
+function checkPhone() {
+    //get value
+    let phone = document.getElementById('phone');
+    let phoneValue = phone.value;
+    const phoneRegex = /\d{3}[\-]\d{3}[\-]\d{4}/;
+    let phoneTest = phoneRegex.test(phoneValue);
+    let phoneError = document.getElementById('phone-error');
+
+
+    // clear previous error message
+    phone.classList = '';
+    phoneError.textContent = '';
+
+    // check value
+    switch (true) {
+        case (phoneValue === ''):
+            phone.classList.add('error');
+            phoneError.textContent = '* Please Enter Your Phone Number';
+            break;
+        case (phoneTest === false):
+            phone.classList.add('error');
+            phoneError.textContent = '* Please Enter A Valid Phone Number';
+            break;
+        case (phoneTest === true):
+            phone.classList.add('correct');
+    }
+}
+
 function checkPassword () {
     // get values
     let pw1 = document.getElementById('pw');
@@ -57,9 +92,6 @@ function checkPassword () {
     let pw2Value = pw2.value;
     const pw1ErrorBox = document.getElementById('pw-error');
     const pw2ErrorBox = document.getElementById('pw-confirm-error');
-
-    console.log({pw1Value});
-    console.log({pw2Value});
 
     // clear previous error messages
     pw1.classList = '';
@@ -84,7 +116,6 @@ function checkPassword () {
             pw1ErrorBox.textContent = '* Password did not match. Please confirm your password.';
             break;
         case ((pw1Value === pw2Value) && (pw1Value !== '') && (pw2Value !== '')):
-            console.log('correct');
             pw1.classList.add('correct');
             pw2.classList.add('correct');
     }
