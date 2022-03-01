@@ -224,7 +224,7 @@ button {
 }
 
 /* TABLETS ------ */
-@media only screen and (min-width: 501px) and (max-width: 1024px) {
+@media only screen and (min-width: 551px) and (max-width: 1024px) {
     aside {
         min-height: 250px; width: 100vw;
         background-image: url('./assets/header-med-wide.png');
