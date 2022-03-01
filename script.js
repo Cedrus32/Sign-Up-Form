@@ -3,51 +3,51 @@
 // -------------- //
 
 function checkForm() {
-    // checkName();
+    checkName();
     // checkContact();
     checkPassword();
 }
 
-// function checkName() {
-//     // get values
-//     let fullName = document.querySelectorAll('fieldset.name input');
-//     let fullNameErrorBoxes = document.querySelectorAll('fieldset.name div.error-box');
-//     const alpha = /^[A-Z][a-z '-]?[a-z]{1,30}$/;
+function checkName() {
+    // get values
+    let fullName = document.querySelectorAll('fieldset.name input');
+    let fullNameErrorBoxes = document.querySelectorAll('fieldset.name div.error-box');
+    const alpha = /^[A-Z][a-z '-]?[a-z]{1,30}$/;
 
-//     // clear previous error messages
-//     for (let i = 0; i <= 1; i++) {
-//         let name = fullName[i];
-//         let nameError = fullNameErrorBoxes[i];
-//         name.classList = '';
-//         nameError.textContent = '';
-//     }
+    // clear previous error messages
+    for (let i = 0; i <= 1; i++) {
+        let name = fullName[i];
+        let nameError = fullNameErrorBoxes[i];
+        name.classList = '';
+        nameError.textContent = '';
+    }
 
-//     // check values
-//     for (let i = 0; i <= 1; i++) {
-//         let name = fullName[i];
-//         let nameValue = name.value;
-//         let nameTest = alpha.test(nameValue);
-//         let nameError = fullNameErrorBoxes[i];
+    // check values
+    for (let i = 0; i <= 1; i++) {
+        let name = fullName[i];
+        let nameValue = name.value;
+        let nameTest = alpha.test(nameValue);
+        let nameError = fullNameErrorBoxes[i];
 
-//         if (nameValue === '') {
-//             name.classList.add('error');
-//             if (i === 0) {
-//                 nameError.textContent = '* Please Enter Your First Name';
-//             } else if (i === 1) {
-//                 nameError.textContent = '* Please Enter Your Last Name';
-//             }
-//         } else if (nameTest === false) {
-//             name.classList.add('error');
-//             if (i === 0) {
-//                 nameError.textContent = '* Please Enter Your First Name';
-//             } else if (i === 1) {
-//                 nameError.textContent = '* Please Enter Your Last Name';
-//             }
-//         } else if (nameTest === true) {
-//             name.classList.add('correct');
-//         }
-//     }
-// }
+        if (nameValue === '') {
+            name.classList.add('error');
+            if (i === 0) {
+                nameError.textContent = '* Please Enter Your First Name';
+            } else if (i === 1) {
+                nameError.textContent = '* Please Enter Your Last Name';
+            }
+        } else if (nameTest === false) {
+            name.classList.add('error');
+            if (i === 0) {
+                nameError.textContent = '* Please Enter Your First Name';
+            } else if (i === 1) {
+                nameError.textContent = '* Please Enter Your Last Name';
+            }
+        } else if (nameTest === true) {
+            name.classList.add('correct');
+        }
+    }
+}
 
 function checkPassword () {
     // get values
