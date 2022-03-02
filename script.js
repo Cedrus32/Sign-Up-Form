@@ -1,3 +1,8 @@
+//TODO add hint for appropriate phone number && email
+//TODO add visual '𝙓' or '✓' when validating (next to label), inline styling?
+//TODO make validation live on unfocus AFTER AN INITIAL FOCUS
+//TODO include .setCustomValidity on all elements
+
 // -------------- //
 // CHECK FUNCTION //
 // -------------- //
@@ -49,11 +54,36 @@ function checkName() {
     }
 }
 
-//TODO add hint for appropriate phone number && email
-
 function checkContact () {
     checkEmail();
     checkPhone();
+}
+
+function checkEmail() {
+    // get value
+    let email = document.getElementById('email');
+    let emailValue = email.value;
+    const emailRegex = /^[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-z0-9]+([._-]?[a-zA-Z0-9]+)*.[a-z]{2,}$/;
+    let emailTest = emailRegex.test(emailValue);
+    let emailError = document.getElementById('email-error');
+
+    // clear previous error message
+    email.classList = '';
+    emailError.textContent = '';
+
+    // check value
+    switch (true) {
+        case (emailValue === ''):
+            email.classList.add('error');
+            emailError.textContent = '* Please Enter Email Address';
+            break;
+        case (emailTest === false):
+            email.classList.add('error');
+            emailError.textContent = '* Please Enter Valid Email Address';
+            break;
+        case (emailTest === true):
+            email.classList.add('correct');
+    }
 }
 
 function checkPhone() {
@@ -73,11 +103,11 @@ function checkPhone() {
     switch (true) {
         case (phoneValue === ''):
             phone.classList.add('error');
-            phoneError.textContent = '* Please Enter Your Phone Number';
+            phoneError.textContent = '* Please Enter Phone Number';
             break;
         case (phoneTest === false):
             phone.classList.add('error');
-            phoneError.textContent = '* Please Enter A Valid Phone Number';
+            phoneError.textContent = '* Please Enter Valid Phone Number';
             break;
         case (phoneTest === true):
             phone.classList.add('correct');
@@ -105,6 +135,7 @@ function checkPassword () {
             pw1.classList.add('error');
             pw2.classList.add('error');
             pw1ErrorBox.textContent = '* Please Enter Password'
+            pw2ErrorBox.textContent = '* Please Confirm Password'
             break;
         case (pw2Value === ''):
             pw2.classList.add('error');
