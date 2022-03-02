@@ -128,6 +128,8 @@ function checkPassword () {
     let pw2 = document.getElementById('pw-confirm');
     let pw1Value = pw1.value;
     let pw2Value = pw2.value;
+    let pwRegex = /[a-zA-Z0-9!@#$%^&*()]{8,30}/;
+    let pwTest = pwRegex.test(pw1Value);
     const pw1ErrorBox = document.getElementById('pw-error');
     const pw2ErrorBox = document.getElementById('pw-confirm-error');
 
@@ -138,25 +140,25 @@ function checkPassword () {
     pw2ErrorBox.textContent = '';
 
     // compare values
-    switch (true) {
-        case (pw1Value === ''):
-            pw1.classList.add('error');
-            pw2.classList.add('error');
+    if (pwTest === false) {
+        pw1.classList.add('error');
+        if (pw1Value === '') {
             pw1ErrorBox.textContent = '* Please Enter Password'
-            pw2ErrorBox.textContent = '* Please Confirm Password'
-            break;
-        case (pw2Value === ''):
-            pw2.classList.add('error');
-            pw2ErrorBox.textContent = '* Please Confirm Password'
-            break;
-        case ((pw1Value !== pw2Value) && (pw1Value !== '') && (pw2Value !== '')):
-            pw1.classList.add('error');
-            pw2.classList.add('error');
-            pw1ErrorBox.textContent = '* Password did not match. Please confirm your password.';
-            break;
-        case ((pw1Value === pw2Value) && (pw1Value !== '') && (pw2Value !== '')):
-            pw1.classList.add('correct');
+        } else {
+            pw1ErrorBox.textContent = '* Please Enter Valid Password'
+        }
+    } else if (pwTest === true) {
+        pw1.classList.add('correct');
+        if (pw1Value === pw2Value) {
             pw2.classList.add('correct');
+        } else {
+            pw2.classList.add('error');
+            pw2ErrorBox.textContent = '* Password did not match. Please confirm your password.'
+        }
+    }
+    if (pw2Value === '') {
+        pw2.classList.add('error');
+        pw2ErrorBox.textContent = '* Please Confirm Password'
     }
 }
 
