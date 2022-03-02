@@ -128,7 +128,7 @@ function checkPassword () {
     let pw2 = document.getElementById('pw-confirm');
     let pw1Value = pw1.value;
     let pw2Value = pw2.value;
-    let pwRegex = /[a-zA-Z0-9!@#$%^&*()]{8,30}/;
+    const pwRegex = /[a-zA-Z0-9!@#$%^&*()]{8,30}/;
     let pwTest = pwRegex.test(pw1Value);
     let pw1ErrorBox = document.getElementById('pw-error');
     let pw2ErrorBox = document.getElementById('pw-confirm-error');
