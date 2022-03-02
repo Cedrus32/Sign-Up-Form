@@ -1,7 +1,6 @@
 //TODO add hint for appropriate phone number && email
 //TODO add visual '𝙓' or '✓' when validating (next to label), inline styling?
 //TODO make validation live on unfocus AFTER AN INITIAL FOCUS
-//TODO include .setCustomValidity on all elements
 
 // -------------- //
 // CHECK FUNCTION //
@@ -17,7 +16,7 @@ function checkName() {
     // get values
     let fullName = document.querySelectorAll('fieldset.name input');
     let fullNameErrorBoxes = document.querySelectorAll('fieldset.name div.error-box');
-    const alphaRegex = /^[A-Z][a-z '-]?[a-z]{1,30}$/;
+    const alphaRegex = /^[A-Z]([ '-]?[a-zA-Z])*$/;
 
     // clear previous error messages
     for (let i = 0; i <= 1; i++) {
@@ -34,22 +33,27 @@ function checkName() {
         let nameTest = alphaRegex.test(nameValue);
         let nameError = fullNameErrorBoxes[i];
 
-        if (nameValue === '') {
-            name.classList.add('error');
-            if (i === 0) {
-                nameError.textContent = '* Please Enter Your First Name';
-            } else if (i === 1) {
-                nameError.textContent = '* Please Enter Your Last Name';
+        if (nameValue.length <= 30) {
+            if (nameValue === '') {
+                name.classList.add('error');
+                if (i === 0) {
+                    nameError.textContent = '* Please Enter Your First Name';
+                } else if (i === 1) {
+                    nameError.textContent = '* Please Enter Your Last Name';
+                }
+            } else if (nameTest === false) {
+                name.classList.add('error');
+                if (i === 0) {
+                    nameError.textContent = '* Please Enter Your First Name';
+                } else if (i === 1) {
+                    nameError.textContent = '* Please Enter Your Last Name';
+                }
+            } else if (nameTest === true) {
+                name.classList.add('correct');
             }
-        } else if (nameTest === false) {
+        } else if (nameValue.length > 30) {
             name.classList.add('error');
-            if (i === 0) {
-                nameError.textContent = '* Please Enter Your First Name';
-            } else if (i === 1) {
-                nameError.textContent = '* Please Enter Your Last Name';
-            }
-        } else if (nameTest === true) {
-            name.classList.add('correct');
+            nameError.textContent = '* Exceeds Maximum Character Count';
         }
     }
 }
