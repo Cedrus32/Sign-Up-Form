@@ -1,4 +1,3 @@
-//TODO add hint for appropriate phone number && email
 //TODO add visual '𝙓' or '✓' when validating (next to label), inline styling?
 //TODO make validation live on unfocus AFTER AN INITIAL FOCUS
 
@@ -76,17 +75,22 @@ function checkEmail() {
     emailError.textContent = '';
 
     // check value
-    switch (true) {
-        case (emailValue === ''):
-            email.classList.add('error');
-            emailError.textContent = '* Please Enter Email Address';
-            break;
-        case (emailTest === false):
-            email.classList.add('error');
-            emailError.textContent = '* Please Enter Valid Email Address';
-            break;
-        case (emailTest === true):
-            email.classList.add('correct');
+    if (emailValue.length <= 30) {
+        switch (true) {
+            case (emailValue === ''):
+                email.classList.add('error');
+                emailError.textContent = '* Please Enter Email Address';
+                break;
+            case (emailTest === false):
+                email.classList.add('error');
+                emailError.textContent = '* Please Enter Valid Email Address';
+                break;
+            case (emailTest === true):
+                email.classList.add('correct');
+        }
+    } else if (emailValue.length > 30) {
+        email.classList.add('error');
+        emailError.textContent = '* Exceeds Maximum Character Count';
     }
 }
 
