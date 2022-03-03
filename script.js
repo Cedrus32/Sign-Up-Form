@@ -2,6 +2,7 @@
 // CHECK FUNCTION //
 // -------------- //
 
+//TODO remove vvv
 function checkForm() {
     checkName();
     checkEmail();
@@ -9,49 +10,40 @@ function checkForm() {
     checkPassword();
 }
 
-let fullName = document.querySelectorAll('fieldset.name input');
-function checkName() {
+let firstName = document.getElementById('first-name');
+let lastName = document.getElementById('last-name');
+let firstNameError = document.getElementById('first-name-error');
+let lastNameError = document.getElementById('last-name-error');
+function checkName(nameSpace, nameSpaceError) {
     // get values
-    let fullNameErrorBoxes = document.querySelectorAll('fieldset.name div.error-box');
+    let name = nameSpace;
+    let nameValue = nameSpace.value;
     const alphaRegex = /^[A-Z]([ '-]?[a-zA-Z])*$/;
+    let nameTest = alphaRegex.test(nameValue);
+    let nameError = nameSpaceError;
 
-    // clear previous error messages
-    for (let i = 0; i <= 1; i++) {
-        let name = fullName[i];
-        let nameError = fullNameErrorBoxes[i];
-        name.classList = '';
-        nameError.textContent = '';
-    }
+    //clear previous error messages
+    name.classList = '';
+    nameError.textContent = '';
 
     // check values
-    for (let i = 0; i <= 1; i++) {
-        let name = fullName[i];
-        let nameValue = name.value;
-        let nameTest = alphaRegex.test(nameValue);
-        let nameError = fullNameErrorBoxes[i];
-
-        if (nameValue.length <= 30) {
-            if (nameValue === '') {
-                name.classList.add('error');
-                if (i === 0) {
-                    nameError.textContent = '* Please Enter Your First Name';
-                } else if (i === 1) {
-                    nameError.textContent = '* Please Enter Your Last Name';
-                }
-            } else if (nameTest === false) {
-                name.classList.add('error');
-                if (i === 0) {
-                    nameError.textContent = '* Please Enter Your First Name';
-                } else if (i === 1) {
-                    nameError.textContent = '* Please Enter Your Last Name';
-                }
-            } else if (nameTest === true) {
-                name.classList.add('correct');
-            }
-        } else if (nameValue.length > 30) {
+    if (nameValue.length <= 30) {
+        if (nameValue === '') {
             name.classList.add('error');
-            nameError.textContent = '* Exceeds Maximum Character Count';
+            if (nameSpace.id === 'first-name') {
+                nameError.textContent = '* Please Enter Your First Name';
+            } else if (nameSpace.id === 'last-name') {
+                nameError.textContent = '* Please Enter Your Last Name';
+            }
+        } else if (nameTest === false) {
+            name.classList.add('error');
+            nameError.textContent = "* Name can include letters, spaces, and the special characters  ' -";
+        } else if (nameTest === true) {
+            name.classList.add('correct');
         }
+    } else if (nameValue.length > 30) {
+        name.classList.add('error');
+        nameError.textContent = '* Exceeds Maximum Character Count'
     }
 }
 
@@ -141,7 +133,7 @@ function checkPassword () {
         if (pw1Value === '') {
             pw1ErrorBox.textContent = '* Please Enter Password'
         } else {
-            pw1ErrorBox.textContent = '* Password must be at least 8 characters long and can contain the special characters !@#$%^&*()'
+            pw1ErrorBox.textContent = '* Password must be at least 8 characters long and can contain the special characters  ! @ # $ % ^ & * ( )'
         }
     } else if (pwTest === true) {
         pw1.classList.add('correct');
@@ -161,6 +153,14 @@ function checkPassword () {
 // --------- //
 // RUN CHECK //
 // --------- //
+
+firstName.addEventListener('blur', () => {
+    checkName(firstName, firstNameError);
+});
+
+lastName.addEventListener('blur', () => {
+    checkName(lastName, lastNameError);
+});
 
 const button = document.querySelector('button');
 button.addEventListener('click', checkForm);
