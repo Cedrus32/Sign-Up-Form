@@ -4,13 +4,14 @@
 
 function checkForm() {
     checkName();
-    checkContact();
+    checkEmail();
+    checkPhone();
     checkPassword();
 }
 
+let fullName = document.querySelectorAll('fieldset.name input');
 function checkName() {
     // get values
-    let fullName = document.querySelectorAll('fieldset.name input');
     let fullNameErrorBoxes = document.querySelectorAll('fieldset.name div.error-box');
     const alphaRegex = /^[A-Z]([ '-]?[a-zA-Z])*$/;
 
@@ -54,14 +55,9 @@ function checkName() {
     }
 }
 
-function checkContact () {
-    checkEmail();
-    checkPhone();
-}
-
+let email = document.getElementById('email');
 function checkEmail() {
     // get value
-    let email = document.getElementById('email');
     let emailValue = email.value;
     const emailRegex = /^[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-z0-9]+([._-]?[a-zA-Z0-9]+)*.[a-z]{2,}$/;
     let emailTest = emailRegex.test(emailValue);
@@ -91,9 +87,9 @@ function checkEmail() {
     }
 }
 
+let phone = document.getElementById('phone');
 function checkPhone() {
     //get value
-    let phone = document.getElementById('phone');
     let phoneValue = phone.value;
     const phoneRegex = /\d{3}[\-]\d{3}[\-]\d{4}/;
     let phoneTest = phoneRegex.test(phoneValue);
@@ -119,10 +115,10 @@ function checkPhone() {
     }
 }
 
+let pw1 = document.getElementById('pw');
+let pw2 = document.getElementById('pw-confirm');
 function checkPassword () {
     // get values
-    let pw1 = document.getElementById('pw');
-    let pw2 = document.getElementById('pw-confirm');
     let pw1Value = pw1.value;
     let pw2Value = pw2.value;
     const pwRegex = /[a-zA-Z0-9!@#$%^&*()]{8,30}/;
