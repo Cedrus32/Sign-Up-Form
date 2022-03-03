@@ -1,6 +1,3 @@
-//TODO add visual '𝙓' or '✓' when validating (next to label), inline styling?
-//TODO make validation live on unfocus AFTER AN INITIAL FOCUS
-
 // -------------- //
 // CHECK FUNCTION //
 // -------------- //

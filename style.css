@@ -197,7 +197,7 @@ button {
 
 
 /* MOBILE ------- */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
     aside {
         min-height: 250px; width: 100vw;
         background-image: url('./assets/header-sml-wide.png');
