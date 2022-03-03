@@ -140,10 +140,12 @@ function checkPassword () {
     // compare values
     if (pwTest === false) {
         pw1.classList.add('error');
+        pw2.classList.add('error');
+        pw2ErrorBox.textContent = '* Please Confirm Password'
         if (pw1Value === '') {
             pw1ErrorBox.textContent = '* Please Enter Password'
         } else {
-            pw1ErrorBox.textContent = '* Please Enter Valid Password'
+            pw1ErrorBox.textContent = '* Password must be at least 8 characters long and can contain the special characters !@#$%^&*()'
         }
     } else if (pwTest === true) {
         pw1.classList.add('correct');
