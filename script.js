@@ -48,12 +48,12 @@ function checkName(nameSpace, nameSpaceError) {
 }
 
 let email = document.getElementById('email');
+let emailError = document.getElementById('email-error');
 function checkEmail() {
     // get value
     let emailValue = email.value;
     const emailRegex = /^[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-z0-9]+([._-]?[a-zA-Z0-9]+)*.[a-z]{2,}$/;
     let emailTest = emailRegex.test(emailValue);
-    let emailError = document.getElementById('email-error');
 
     // clear previous error message
     email.classList = '';
@@ -80,13 +80,12 @@ function checkEmail() {
 }
 
 let phone = document.getElementById('phone');
+let phoneError = document.getElementById('phone-error');
 function checkPhone() {
     //get value
     let phoneValue = phone.value;
     const phoneRegex = /\d{3}[\-]\d{3}[\-]\d{4}/;
     let phoneTest = phoneRegex.test(phoneValue);
-    let phoneError = document.getElementById('phone-error');
-
 
     // clear previous error message
     phone.classList = '';
@@ -162,5 +161,12 @@ lastName.addEventListener('blur', () => {
     checkName(lastName, lastNameError);
 });
 
+email.addEventListener('blur', checkEmail);
+
+phone.addEventListener('blur', checkPhone);
+
+
+
+//TODO remove vvv
 const button = document.querySelector('button');
 button.addEventListener('click', checkForm);
