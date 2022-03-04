@@ -2,12 +2,13 @@
 // CHECK FUNCTION //
 // -------------- //
 
-//TODO remove vvv
 function checkForm() {
-    checkName();
+    checkName(firstName, firstNameError);
+    checkName(lastName, lastNameError);
     checkEmail();
     checkPhone();
     checkPassword();
+    checkPasswordConfirm();
 }
 
 let firstName = document.getElementById('first-name');
@@ -17,7 +18,7 @@ let lastNameError = document.getElementById('last-name-error');
 function checkName(nameSpace, nameSpaceError) {
     // get values
     let name = nameSpace;
-    let nameValue = nameSpace.value;
+    let nameValue = name.value;
     const alphaRegex = /^[A-Z]([ '-]?[a-zA-Z])*$/;
     let nameTest = alphaRegex.test(nameValue);
     let nameError = nameSpaceError;
@@ -26,7 +27,7 @@ function checkName(nameSpace, nameSpaceError) {
     name.classList = '';
     nameError.textContent = '';
 
-    // check values
+    // check value
     if (nameValue.length <= 30) {
         if (nameValue === '') {
             name.classList.add('error');
@@ -106,46 +107,56 @@ function checkPhone() {
     }
 }
 
+
 let pw1 = document.getElementById('pw');
-let pw2 = document.getElementById('pw-confirm');
+let pw1Error = document.getElementById('pw-error');
 function checkPassword () {
     // get values
     let pw1Value = pw1.value;
-    let pw2Value = pw2.value;
     const pwRegex = /[a-zA-Z0-9!@#$%^&*()]{8,30}/;
-    let pwTest = pwRegex.test(pw1Value);
-    let pw1ErrorBox = document.getElementById('pw-error');
-    let pw2ErrorBox = document.getElementById('pw-confirm-error');
-    
+    let pw1Test = pwRegex.test(pw1Value);
 
     // clear previous error messages
-    pw1.classList = '';
-    pw2.classList = '';
-    pw1ErrorBox.textContent = '';
-    pw2ErrorBox.textContent = '';
+    pw1.classList = ''
+    pw1Error.textContent = '';
 
-    // compare values
-    if (pwTest === false) {
+    // check value
+    if (pw1Test === false) {
         pw1.classList.add('error');
-        pw2.classList.add('error');
-        pw2ErrorBox.textContent = '* Please Confirm Password'
         if (pw1Value === '') {
-            pw1ErrorBox.textContent = '* Please Enter Password'
+            pw1Error.textContent = '* Please Enter Password'
+        } else if (0 < pw1Value.length < 8) {
+            pw1Error.textContent = '* Password too short. Must be at least 8 characters.'
+        } else if (pw1Value.legnth > 30) {
+            pw1Error.textContent = '* Password too long. Must be 30 characters or less.'
         } else {
-            pw1ErrorBox.textContent = '* Password must be at least 8 characters long and can contain the special characters  ! @ # $ % ^ & * ( )'
+            pw1Error.textContent = '* Please use valid characters. Password can be letters, numbers, and the special characters  ! @ # $ % ^ & * ( )'
         }
-    } else if (pwTest === true) {
+    } else if (pw1Test === true) {
         pw1.classList.add('correct');
-        if (pw1Value === pw2Value) {
-            pw2.classList.add('correct');
-        } else {
-            pw2.classList.add('error');
-            pw2ErrorBox.textContent = '* Password did not match. Please confirm your password.'
-        }
     }
+}
+
+let pw2 = document.getElementById('pw-confirm');
+let pw2Error = document.getElementById('pw-confirm-error');
+function checkPasswordConfirm() {
+    // get values
+    let pw2Value = pw2.value;
+    let pw1Value = pw1.value;
+
+    // clear previous error messages
+    pw2.classList = '';
+    pw2Error.textContent = '';
+
+    // compare value
     if (pw2Value === '') {
         pw2.classList.add('error');
-        pw2ErrorBox.textContent = '* Please Confirm Password'
+        pw2Error.textContent = '* Please Confirm Password';
+    } else if (pw2Value !== pw1Value) {
+        pw2.classList.add('error');
+        pw2Error.textContent = '* Password does not match. Please confirm password.'
+    } else if (pw2Value === pw1Value) {
+        pw2.classList.add('correct');
     }
 }
 
@@ -165,8 +176,9 @@ email.addEventListener('blur', checkEmail);
 
 phone.addEventListener('blur', checkPhone);
 
+pw1.addEventListener('blur', checkPassword);
 
+pw2.addEventListener('blur', checkPasswordConfirm);
 
-//TODO remove vvv
 const button = document.querySelector('button');
 button.addEventListener('click', checkForm);
