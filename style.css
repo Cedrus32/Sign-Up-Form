@@ -91,13 +91,12 @@ small, footer a {
 }
 
 .form-shadow {
-    height: 5px;
-    background-image:
-        linear-gradient(to bottom, rgb(0, 0, 0, 0.1), #F9FAFB)
-        /* -webkit-linear-gradient(to bottom, rgb(0, 0, 0), #F9FAFB)
-        -moz-linear-gradient(to bottom, rgb(0, 0, 0), #F9FAFB)
-        -o-linear-gradient(to bottom, rgb(0, 0, 0), #F9FAFB) */
-        
+    height: 5px; width: 100%;
+    background-color: #F9FAFB;
+    background-image: linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
+    background-image: -webkit-linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
+    background-image: -moz-linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
+    background-image: -o-linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
 }
 
 em {
