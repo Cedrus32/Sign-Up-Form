@@ -9,7 +9,7 @@
 
 body {
     background-color: white;
-    color: black;
+    color: #262120;
 }
 
 /* --------------- */
@@ -133,11 +133,21 @@ fieldset div {
 }
 
 label {
-    padding: 0px 0px 2px; margin: 0px;
+    padding: 0px 0px 7px; margin: 0px;
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.05rem;
     white-space:pre-wrap;
+}
+
+.required:after {
+    margin-left: 10px;
+    padding: 4px;
+    background-color:rgba(34, 28, 28, 0.8);
+    border-radius: 3px;
+    content: 'required';
+    color: white;
+    text-transform: lowercase;
 }
 
 input[type='text'],
@@ -186,7 +196,7 @@ input.correct {
 
 button {
     padding: 10px; margin: 0px;
-    background-color: #3C3636;
+    background-color: rgba(34, 28, 28, 0.8);
     border: none;
     border-radius: 8px;
     color: white;
@@ -194,7 +204,7 @@ button {
 }
 
 .account-action a {
-    color: #3C3636;
+    color: #9DB337;
     text-decoration: none;
     font-weight: bold;
 }
