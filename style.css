@@ -154,10 +154,20 @@ input:focus {
     border: 1px solid #3E8CE0;
 }
 
-input.error {
+input:invalid {
     outline: none;
     border: 1px solid #E933BB;
 }
+
+/* input:valid {
+    outline: none;
+    border: 1px solid #4CA84A;
+} */
+
+/* input.error {
+    outline: none;
+    border: 1px solid #E933BB;
+} */
 
 input.correct {
     outline: none;
