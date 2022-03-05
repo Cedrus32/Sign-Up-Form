@@ -159,16 +159,6 @@ input:invalid {
     border: 1px solid #E933BB;
 }
 
-/* input:valid {
-    outline: none;
-    border: 1px solid #4CA84A;
-} */
-
-/* input.error {
-    outline: none;
-    border: 1px solid #E933BB;
-} */
-
 input.correct {
     outline: none;
     border: 1px solid #4CA84A;

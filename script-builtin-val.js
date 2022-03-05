@@ -15,13 +15,10 @@ function checkName(nameSpace, errorSpace) {
     errorSpace.textContent = '';
 
     // check value
-    if (isValid === false) {
+    if ((isValid === false) && (nameSpace.value !== '')) {
         errorSpace.textContent = "* Name can include letters, spaces, and the special characters  ' -";
     } else if ((isValid === true) && (nameSpace.value !== '')) {
         nameSpace.classList.add('correct');
-    } else if (nameSpace.value === '') {
-        nameSpace.classList = '';
-        errorSpace.textContent = '';
     }
 }
 
@@ -30,11 +27,11 @@ function checkName(nameSpace, errorSpace) {
 // --------- //
 
 firstName.addEventListener('focus', () => {
-    firstName.addEventListener('keyup', (e) => {
+    firstName.addEventListener('keyup', () => {
         checkName(firstName, firstNameError)
 })});
 
 lastName.addEventListener('focus', () => {
-    lastName.addEventListener('keyup', (e) => {
+    lastName.addEventListener('keyup', () => {
         checkName(lastName, lastNameError)
 })});
