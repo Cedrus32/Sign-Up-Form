@@ -24,7 +24,7 @@ function checkName(nameSpace) {
     nameSpace.classList = '';
     nameError.textContent = '';
 
-    // check valus
+    // check values
     if ((isValid === false) && (nameSpace.value !== '')) {
         nameError.textContent = "* Name can include letters, spaces, and the special characters  ' -";
     } else if ((isValid === true) && (nameSpace.value !== '')) {
@@ -47,7 +47,7 @@ function checkEmail() {
     emailLabel.classList.remove('hide');
     emailError.textContent = '';
 
-    // check valus
+    // check values
     if ((isValid === false) ** (email.value !== '')) {
         emailError.textContent = '* Please enter valid email address';
     } else if ((isValid === true) && (email.value !== '')) {
@@ -58,20 +58,23 @@ function checkEmail() {
 
 // ---- PHONE ---- //
 
-let phone = document.getElementById('phone');
+let phone = document.querySelectorAll('div.phone input');
+console.log(phone);
 let phoneError = document.getElementById('phone-error');
-function checkPhone() {
+function checkPhone(part) {
     // set values
-    let isValid = phone.checkValidity();
-    
+    let isValid = part.checkValidity();
+    console.log(isValid);
 
     // clear previous error message
-    phone.classList = '';
+    part.classList = '';
     phoneError.textContent = '';
 
     // check values
-    if ((isValid === false) && (phone.value !== '')) {
-        
+    if ((isValid === false) && (part.value !== '')) {
+        phoneError.textContent = '* Please enter a valid phone number';
+    } else if ((isValid === true) && (part.value !== '')) {
+        part.classList.add('correct');
     }
 }
 
@@ -113,8 +116,12 @@ email.addEventListener('blur', () => {
     email.classList = '';
 });
 
-phone.addEventListener('focus', () => {
-    phone.addEventListener('keyup', () => {
-        checkPhone();
+phone.forEach(part => part.addEventListener('focus', () => {
+    part.addEventListener('keyup', () => {
+        checkPhone(part);
     });
-});
+}));
+
+phone.forEach(part => part.addEventListener('blur', () => {
+    part.classList = '';
+}));
