@@ -156,11 +156,40 @@ label {
 
 input[type='text'],
 input[type='email'],
-input[type='password'],
-div.email {
+input[type='password'] {
     border: 1px solid rgb(228, 231, 234);
     border-radius: 5px;
     padding: 5px;
+}
+
+div.phone {
+    display: flex;
+    flex-flow: row;
+    gap: 5px;
+    height: 30px; width: auto;
+    padding: 0px; margin: 0px;
+    border: 1px solid rgb(228, 231, 234);
+    border-radius: 5px;
+}
+
+input[type='tel'] {
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input#area-code,
+input#prefix {
+    width: 20%;
+}
+
+input#extension {
+    width: 60%;
+}
+
+input::placeholder {
+    color: lightgrey;
 }
 
 input:focus {
@@ -186,17 +215,6 @@ input.correct {
     font-size: 0.6rem;
     color: #E933BB;
 }
-
-div.email {
-    display: flex;
-    flex-flow: row;
-    height: 30px; width: auto;
-}
-
-/* div.email input {
-    outline: none;
-
-} */
 
 /* -------------- */
 /* ACTION STYLING */
@@ -225,9 +243,8 @@ button {
 }
 
 /* -------------- */
-/* TABLET STYLING */
+/* DEVICE STYLING */
 /* -------------- */
-
 
 /* MOBILE ------- */
 @media only screen and (max-width: 550px) {
