@@ -41,7 +41,6 @@ function checkEmail() {
     // set values
     let isValid = email.checkValidity();
     let emailLabel = document.querySelector('label.email.required');
-    let emailError = document.getElementById('email');
 
     // clear previous error message
     email.classList = '';
@@ -54,6 +53,25 @@ function checkEmail() {
     } else if ((isValid === true) && (email.value !== '')) {
         emailLabel.classList.add('hide');
         email.classList.add('correct');
+    }
+}
+
+// ---- PHONE ---- //
+
+let phone = document.getElementById('phone');
+let phoneError = document.getElementById('phone-error');
+function checkPhone() {
+    // set values
+    let isValid = phone.checkValidity();
+    
+
+    // clear previous error message
+    phone.classList = '';
+    phoneError.textContent = '';
+
+    // check values
+    if ((isValid === false) && (phone.value !== '')) {
+        
     }
 }
 

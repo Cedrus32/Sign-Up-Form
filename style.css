@@ -156,8 +156,8 @@ label {
 
 input[type='text'],
 input[type='email'],
-input[type='tel'],
-input[type='password'] {
+input[type='password'],
+div.email {
     border: 1px solid rgb(228, 231, 234);
     border-radius: 5px;
     padding: 5px;
@@ -186,6 +186,17 @@ input.correct {
     font-size: 0.6rem;
     color: #E933BB;
 }
+
+div.email {
+    display: flex;
+    flex-flow: row;
+    height: 30px; width: auto;
+}
+
+/* div.email input {
+    outline: none;
+
+} */
 
 /* -------------- */
 /* ACTION STYLING */
