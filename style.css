@@ -150,6 +150,10 @@ label {
     text-transform: lowercase;
 }
 
+.hide:after {
+    display: none;
+}
+
 input[type='text'],
 input[type='email'],
 input[type='tel'],
