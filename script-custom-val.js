@@ -6,7 +6,7 @@ function checkForm() {
     checkName(firstName, firstNameError);
     checkName(lastName, lastNameError);
     checkEmail();
-    checkPhone();
+    checkPhonePart();
     checkPassword();
     checkPasswordConfirm();
 }
@@ -82,7 +82,7 @@ function checkEmail() {
 
 let phone = document.getElementById('phone');
 let phoneError = document.getElementById('phone-error');
-function checkPhone() {
+function checkPhonePart() {
     //get value
     let phoneValue = phone.value;
     const phoneRegex = /\d{3}[\-]\d{3}[\-]\d{4}/;
@@ -174,7 +174,7 @@ lastName.addEventListener('blur', () => {
 
 email.addEventListener('blur', checkEmail);
 
-phone.addEventListener('blur', checkPhone);
+phone.addEventListener('blur', checkPhonePart);
 
 pw1.addEventListener('blur', checkPassword);
 
@@ -182,3 +182,87 @@ pw2.addEventListener('blur', checkPasswordConfirm);
 
 const button = document.querySelector('button');
 button.addEventListener('click', checkForm);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let phone = document.querySelectorAll('div.phone input');
+let phoneError = document.getElementById('phone-error');
+let phoneParts = [];
+function checkPhonePart(part) {
+    // set values
+    let isValid = part.checkValidity();
+    let allValid = phoneParts.every(partValid => partValid === true);
+    let allNull = phoneParts.every(partNull => partNull === '');
+    let anyNull = phoneParts.some(partNull => partNull === '');
+
+    // fill phoneParts[]
+    if (part.value === '') {
+        if (part.id === 'area-code') {
+            phoneParts[0] = '';
+        } else if (part.id === 'prefix') {
+            phoneParts[1] = '';
+        } else if (part.id === 'extension') {
+            phoneParts[2] = '';
+        }
+    } else if (part.value !== '') {
+        if (part.id === 'area-code') {
+            phoneParts[0] = part.checkValidity();
+        } else if (part.id === 'prefix') {
+            phoneParts[1] = part.checkValidity();
+        } else if (part.id === 'extension') {
+            phoneParts[2] = part.checkValidity();
+        }
+    }
+
+    // clear previous error message
+    part.classList = '';
+
+    console.log('// ---- CHECK PART ---- //')
+    console.log(part.value);
+    console.log({isValid});
+    console.log({allValid});
+    console.log({allNull});
+
+    // check values
+    if ((isValid === false) && (part.value !== '')) {
+        phoneError.textContent = '* Please enter a valid phone number';
+    } else if ((isValid === true) && (part.value !== '')) {
+        part.classList.add('correct');
+    }
+
+    if ((allValid === true) || (allNull === true)) {
+        phoneError.textContent = '';
+    }
+
+    console.log('// ---- CHECK WHOLE ---- //')
+    console.log(phoneParts);
+    console.log({allValid});
+    console.log({allNull});
+    console.log({anyNull});
+
+    // check values
+    if ((allValid === false) && (allNull === false)) {
+        phoneError.textContent = '* Please enter a valid phone number'
+    } else if ((allValid === true) || (allNull === true)) {
+        phoneError.textContent = '';
+    }
+
+}

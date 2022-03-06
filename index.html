@@ -85,13 +85,17 @@
                             <fieldset class='password'>
                                 <legend>Password</legend>
                                 <div>
-                                    <label for='pw'>Password</label>
-                                    <input type='password' id='pw' name='password'>
+                                    <label class='pw required' for='pw'>Password (8-30 characters)</label>
+                                    <input type='password' id='pw' name='password'
+                                           pattern='[a-zA-Z0-9!@#$%^&*()]+' minlength='8' maxlength='30'
+                                           aria-required='true' required>
                                     <div id='pw-error' class='error-box'></div>
                                 </div>        
                                 <div>
-                                    <label for='pw-confirm'>Password  Confirm</label>
-                                    <input type='password' id='pw-confirm' name='password-confirm'>
+                                    <label class='pw-confirm required' for='pw-confirm'>Password  Confirm</label>
+                                    <input type='password' id='pw-confirm' name='password-confirm'
+                                           pattern='[a-zA-Z0-9!@#$%^&*()]+' minlength='8' maxlength='30'
+                                           aria-required='true' required>
                                     <div id='pw-confirm-error' class='error-box'></div>
                                 </div>
                             </fieldset>

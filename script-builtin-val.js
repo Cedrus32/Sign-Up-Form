@@ -168,3 +168,6 @@ phone.forEach(part => part.addEventListener('focus', () => {
 phone.forEach(part => part.addEventListener('blur', () => {
     part.classList = '';
 }));
+
+// ---- PASSWORD ---- //
+
