@@ -48,7 +48,7 @@ function checkEmail() {
     emailError.textContent = '';
 
     // check values
-    if ((isValid === false) ** (email.value !== '')) {
+    if ((isValid === false) && (email.value !== '')) {
         emailError.textContent = '* Please enter valid email address';
     } else if ((isValid === true) && (email.value !== '')) {
         emailLabel.classList.add('hide');
@@ -59,22 +59,65 @@ function checkEmail() {
 // ---- PHONE ---- //
 
 let phone = document.querySelectorAll('div.phone input');
-console.log(phone);
+// console.log(phone);
 let phoneError = document.getElementById('phone-error');
+// console.log(phoneError);
+let phoneParts = ['', '', ''];
+
 function checkPhone(part) {
     // set values
     let isValid = part.checkValidity();
-    console.log(isValid);
 
-    // clear previous error message
-    part.classList = '';
-    phoneError.textContent = '';
-
-    // check values
-    if ((isValid === false) && (part.value !== '')) {
-        phoneError.textContent = '* Please enter a valid phone number';
+    // fill phone parts
+    if (part.value === '') {
+        if (part.id === 'area-code') {
+            phoneParts[0] = '';
+        } else if (part.id === 'prefix') {
+            phoneParts[1] = '';
+        } else if (part.id === 'extension') {
+            phoneParts[2] = '';
+        }
+    } else if (part.value !== '') {
+        if (part.id === 'area-code') {
+            phoneParts[0] = part.checkValidity();
+        } else if (part.id === 'prefix') {
+            phoneParts[1] = part.checkValidity();
+        } else if (part.id === 'extension') {
+            phoneParts[2] = part.checkValidity();
+        }
+    }
+    
+    // check part values
+    if (isValid === false) {
+        part.classList = '';
     } else if ((isValid === true) && (part.value !== '')) {
         part.classList.add('correct');
+    } else if (part.value == '') {
+        part.classList = '';
+    }
+    
+    // set values
+    let anyInput = phoneParts.some(part => part !== '');
+    let allPartsValid = phoneParts.every(part => part === true);
+    let allPartsNull = phoneParts.every(part => part === '');
+
+    // check phone whole
+    if (allPartsNull === true) {
+        phone.forEach(part => part.setCustomValidity(''));
+        phoneError.textContent = '';
+    } else if (anyInput === true) {
+        if (allPartsValid === true) {
+            phoneError.textContent = '';
+        } else {
+            for (let i = 0; i < 3; i++) {
+                if (phoneParts[i] === '') {
+                    phone[i].setCustomValidity('* Please provide valid phone number');
+                } else {
+                    phone[i].setCustomValidity('');
+                }
+            }
+            phoneError.textContent = '* Please provide valid phone number';
+        }
     }
 }
 
