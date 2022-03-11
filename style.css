@@ -1,9 +1,6 @@
 /* -------------- */
 /* GLOBAL STYLING */
 /* -------------- */
-:root {
-    --label-width: 100%;
-}
 
 * {
     font-family: 'Helvetica', Verdana, Tahoma, sans-serif;
@@ -232,7 +229,6 @@ input.correct {
     color: #E933BB;
 }
 
-
 /* -------------- */
 /* ACTION STYLING */
 /* -------------- */
@@ -345,7 +341,6 @@ button {
     aside {
         flex: 0 2 40%;
         height: 718px;
-        /* width: 50%; */
         background-image: url('./assets/header-lrg-tall.png');
         background-position: center;
         background-size: cover;
