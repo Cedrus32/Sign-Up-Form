@@ -145,16 +145,25 @@ label {
     white-space:pre-wrap;
 }
 
-.required::after {
+.required::after,
+.optional::after {
     position: absolute;
     left: calc(100% - 65px); top: 23px;
     margin-left: 10px;
     padding: 4px;
     background-color:rgba(34, 28, 28, 0.8);
     border-radius: 3px;
-    content: 'required';
     color: white;
     text-transform: lowercase;
+}
+
+.required::after {
+    content: 'required';
+}
+
+.optional::after {
+    z-index: 1;
+    content: 'optional';
 }
 
 .hide::after {

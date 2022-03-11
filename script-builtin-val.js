@@ -40,10 +40,10 @@ function checkName(nameSpace) {
 
 let email = document.getElementById('email');
 let emailError = document.getElementById('email-error');
+let emailLabel = document.querySelector('label.email.required');
 function checkEmail() {
     // set values
     let isValid = email.checkValidity();
-    let emailLabel = document.querySelector('label.email.required');
 
     // clear previous error message
     email.classList = '';
@@ -61,10 +61,9 @@ function checkEmail() {
 
 // ---- PHONE ---- //
 
-//todo create 'optional' badge to match 'required' badges
-
 let phone = document.querySelectorAll('div.phone input');
 let phoneError = document.getElementById('phone-error');
+let phoneLabel = document.querySelector('label.optional');
 let phoneParts = ['', '', ''];
 
 function checkPhone(part) {
@@ -106,12 +105,15 @@ function checkPhone(part) {
 
     // check whole phone
     if (allPartsNull === true) {
+        phoneLabel.classList.remove('hide');
         phone.forEach(part => part.setCustomValidity(''));
         phoneError.textContent = '';
     } else if (anyInput === true) {
         if (allPartsValid === true) {
+            phoneLabel.classList.add('hide');
             phoneError.textContent = '';
         } else {
+            phoneLabel.classList.remove('hide');
             for (let i = 0; i < 3; i++) {
                 if (phoneParts[i] === '') {
                     phone[i].setCustomValidity('* Please provide valid phone number');
@@ -125,6 +127,9 @@ function checkPhone(part) {
 }
 
 // ---- PASSWORD ---- //
+
+//todo add option to view password
+//todo add popup to check pw meets criteria (8-15, appropriate characters)
 
 let passwords = document.querySelectorAll('fieldset.password input');
 let pw1 = passwords[0];
