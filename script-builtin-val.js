@@ -7,6 +7,7 @@
 let firstName = document.getElementById('first-name');
 let lastName = document.getElementById('last-name');
 function checkName(nameSpace) {
+
     // set values
     let isValid = nameSpace.checkValidity();
     let nameLabel;
@@ -26,7 +27,7 @@ function checkName(nameSpace) {
 
     // check values
     if ((isValid === false) && (nameSpace.value !== '')) {
-        nameError.textContent = "* Name can include letters, spaces, and the special characters  ' -";
+        nameError.textContent = "* Please provide a valid name";
     } else if ((isValid === true) && (nameSpace.value !== '')) {
         nameLabel.classList.add('hide');
         nameSpace.classList.add('correct');
@@ -34,6 +35,8 @@ function checkName(nameSpace) {
 }
 
 // ---- EMAIL ---- //
+
+//todo add custom regex
 
 let email = document.getElementById('email');
 let emailError = document.getElementById('email-error');
@@ -58,14 +61,14 @@ function checkEmail() {
 
 // ---- PHONE ---- //
 
+//todo create 'optional' badge to match 'required' badges
+
 let phone = document.querySelectorAll('div.phone input');
-// console.log(phone);
 let phoneError = document.getElementById('phone-error');
-// console.log(phoneError);
 let phoneParts = ['', '', ''];
 
 function checkPhone(part) {
-    // set values
+    // set part values
     let isValid = part.checkValidity();
 
     // fill phone parts
@@ -79,11 +82,11 @@ function checkPhone(part) {
         }
     } else if (part.value !== '') {
         if (part.id === 'area-code') {
-            phoneParts[0] = part.checkValidity();
+            phoneParts[0] = isValid;
         } else if (part.id === 'prefix') {
-            phoneParts[1] = part.checkValidity();
+            phoneParts[1] = isValid;
         } else if (part.id === 'extension') {
-            phoneParts[2] = part.checkValidity();
+            phoneParts[2] = isValid;
         }
     }
     
@@ -92,16 +95,16 @@ function checkPhone(part) {
         part.classList = '';
     } else if ((isValid === true) && (part.value !== '')) {
         part.classList.add('correct');
-    } else if (part.value == '') {
+    } else if (part.value === '') {
         part.classList = '';
     }
     
-    // set values
+    // set whole values
+    let allPartsNull = phoneParts.every(part => part === '');
     let anyInput = phoneParts.some(part => part !== '');
     let allPartsValid = phoneParts.every(part => part === true);
-    let allPartsNull = phoneParts.every(part => part === '');
 
-    // check phone whole
+    // check whole phone
     if (allPartsNull === true) {
         phone.forEach(part => part.setCustomValidity(''));
         phoneError.textContent = '';
@@ -121,6 +124,79 @@ function checkPhone(part) {
     }
 }
 
+// ---- PASSWORD ---- //
+
+let passwords = document.querySelectorAll('fieldset.password input');
+let pw1 = passwords[0];
+let pw2 = passwords[1];
+let passwordErrors = document.querySelectorAll('fieldset.password div.error-box');
+let pw1Error = passwordErrors[0];
+let pw2Error = passwordErrors[1];
+let passwordLabels = document.querySelectorAll('fieldset.password label.required');
+let pw1Label = passwordLabels[0];
+let pw2Label = passwordLabels[1];
+let pws = ['', ''];
+
+
+function checkPW(password) {
+    // set values
+    pw2.setCustomValidity('');
+    let isValid = password.checkValidity();
+
+    // fill pws
+    if (password === '') {
+        if (password.id === 'pw') {
+            pws[0] = '';
+        } else if (password.id === 'pw-confirm') {
+            pws[1] = '';
+        }
+    } else if (password !== '') {
+        if (password.id === 'pw') {
+            pws[0] = isValid;
+        } else if (password.id === 'pw-confirm') {
+            pws[1] = isValid;
+        }
+    }
+
+    // check pw
+    if (password.id === 'pw') {
+        // clear previous error
+        pw1.classList = '';
+        pw1Label.classList.remove('hide');
+        pw1Error.textContent = '';
+
+        // confirm values
+        if ((pws[0] === true) && (pw1.value !== '')) {
+            pw1Label.classList.add('hide');
+            pw1.classList.add('correct');
+        } else if ((pws[0] === false) && (pw1.value !== '')) {
+            pw1Error.textContent = '* Password can include letters, numbers, and special characters  !  @  #  $  %  ^  &  *  (  )';
+        }
+    }
+
+    // confirm pw
+
+    if (pw1.value === pw2.value) {
+        if (pws[1] === false) {
+            pw2Error.textContent = '* Please confirm valid password';
+        } else if (pws[1] === true) {
+            pw2Error.textContent = '';
+            pw2Label.classList.add('hide');
+            pw2.classList.add('correct');
+        }
+    } else if (pw1.value !== pw2.value) {
+        pw2.classList = '';
+        pw2Label.classList.remove('hide');
+        if (pws[1] === true) {
+            pw2.setCustomValidity('* Passwords do not match');
+            pw2Error.textContent = '* Passwords do not match'
+        } else if (pws[1] === false) {
+            pw2Error.textContent = '* Passwords do not match'
+        }
+    }
+}
+
+
 // --------------- //
 // LISTENER EVENTS //
 // --------------- //
@@ -133,18 +209,10 @@ firstName.addEventListener('focus', () => {
     });
 });
 
-firstName.addEventListener('blur', () => {
-    firstName.classList = '';
-});
-
 lastName.addEventListener('focus', () => {
     lastName.addEventListener('keyup', () => {
         checkName(lastName);
     });
-});
-
-lastName.addEventListener('blur', () => {
-    lastName.classList = '';
 });
 
 // ---- CONTACT ---- //
@@ -155,19 +223,16 @@ email.addEventListener('focus', () => {
     });
 });
 
-email.addEventListener('blur', () => {
-    email.classList = '';
-});
-
 phone.forEach(part => part.addEventListener('focus', () => {
     part.addEventListener('keyup', () => {
         checkPhone(part);
     });
 }));
 
-phone.forEach(part => part.addEventListener('blur', () => {
-    part.classList = '';
-}));
-
 // ---- PASSWORD ---- //
 
+passwords.forEach(password => password.addEventListener('focus', () => {
+    password.addEventListener('keyup', () => {
+        checkPW(password);
+    });
+}));
