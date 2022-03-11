@@ -209,13 +209,9 @@ input:invalid {
     border: 1px solid #E933BB;
 }
 
-.invalid {
-    border: 1px solid #E933BB;
-}
-
 input.correct {
     outline: none;
-    border: 1px solid #4CA84A;
+    border: 1px solid #9DB337;
 }
 
 .error-box {
