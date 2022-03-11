@@ -8,8 +8,8 @@
 }
 
 body {
-    background-color: #F9FAFB;
-    color: black;
+    background-color: white;
+    color: #262120;
 }
 
 /* --------------- */
@@ -36,7 +36,7 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%; height: 170px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(34, 28, 28, 0.8);
 }
 
 header img {
@@ -84,11 +84,19 @@ small, footer a {
 .form .content {
     padding: 30px 20px 30px;
     position: relative; z-index: 1;
-    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 .form {
     background-color: white;
+}
+
+.form-shadow {
+    height: 5px; width: 100%;
+    background-color: #F9FAFB;
+    background-image: linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
+    background-image: -webkit-linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
+    background-image: -moz-linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
+    background-image: -o-linear-gradient(to bottom, #E0E0E1, #F9FAFB); 
 }
 
 em {
@@ -125,35 +133,91 @@ fieldset div {
 }
 
 label {
-    padding: 0px 0px 2px; margin: 0px;
+    position: relative;
+    padding: 0px 0px 7px; margin: 0px;
+    width: 100%;
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.05rem;
     white-space:pre-wrap;
 }
 
+.required::after,
+.optional::after {
+    position: absolute;
+    left: calc(100% - 65px); top: 23px;
+    margin-left: 10px;
+    padding: 4px;
+    background-color:rgba(34, 28, 28, 0.8);
+    border-radius: 3px;
+    color: white;
+    text-transform: lowercase;
+}
+
+.required::after {
+    content: 'required';
+}
+
+.optional::after {
+    z-index: 1;
+    content: 'optional';
+}
+
+.hide::after {
+    display: none;
+}
+
 input[type='text'],
 input[type='email'],
-input[type='tel'],
 input[type='password'] {
     border: 1px solid rgb(228, 231, 234);
     border-radius: 5px;
     padding: 5px;
 }
 
-input:focus {
-    outline: none;
-    border: 1px solid blue;
+div.phone {
+    display: flex;
+    flex-flow: row;
+    gap: 5px;
+    height: 30px; width: auto;
+    padding: 0px; margin: 0px;
+    border: 1px solid rgb(228, 231, 234);
+    border-radius: 5px;
 }
 
-input.error {
+input[type='tel'] {
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input#area-code,
+input#prefix {
+    width: 20%;
+}
+
+input#extension {
+    width: 60%;
+}
+
+input::placeholder {
+    color: lightgrey;
+}
+
+input:focus {
     outline: none;
-    border: 1px solid red;
+    border: 1px solid #3E8CE0;
+}
+
+input:invalid {
+    outline: none;
+    border: 1px solid #E933BB;
 }
 
 input.correct {
     outline: none;
-    border: 1px solid green;
+    border: 1px solid #9DB337;
 }
 
 .error-box {
@@ -162,7 +226,7 @@ input.correct {
     position: absolute;
     top: 52px;
     font-size: 0.6rem;
-    color: red;
+    color: #E933BB;
 }
 
 /* -------------- */
@@ -178,7 +242,7 @@ input.correct {
 
 button {
     padding: 10px; margin: 0px;
-    background-color: #7C8A67;
+    background-color: rgba(34, 28, 28, 0.8);
     border: none;
     border-radius: 8px;
     color: white;
@@ -186,15 +250,14 @@ button {
 }
 
 .account-action a {
-    color: #7C8A67;
+    color: #9DB337;
     text-decoration: none;
     font-weight: bold;
 }
 
 /* -------------- */
-/* TABLET STYLING */
+/* DEVICE STYLING */
 /* -------------- */
-
 
 /* MOBILE ------- */
 @media only screen and (max-width: 550px) {
@@ -212,7 +275,7 @@ button {
 
     footer {
         position: relative;
-        top: 60px;
+        top: 18px; left: 65px;
     }
 
     form,
@@ -224,7 +287,7 @@ button {
 }
 
 /* TABLETS ------ */
-@media only screen and (min-width: 551px) and (max-width: 1024px) {
+@media only screen and (min-width: 551px) and (max-width: 899px) {
     aside {
         min-height: 250px; width: 100vw;
         background-image: url('./assets/header-med-wide.png');
@@ -239,7 +302,7 @@ button {
 
     footer {
         position: relative;
-        top: 60px;
+        top: 18px; left: 65px;
     }
 
     form {
@@ -263,13 +326,12 @@ button {
 }
 
 /* PCS ---------- */
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 900px) {
 
     body {
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        background-color: #11151A;
     }
 
     .container {
@@ -277,8 +339,9 @@ button {
     }
     
     aside {
-        height: 718px; width: 50%;
-        background-image: url('./assets/header-lrg-tall.jpg');
+        flex: 0 2 40%;
+        height: 718px;
+        background-image: url('./assets/header-lrg-tall.png');
         background-position: center;
         background-size: cover;
     }
@@ -291,6 +354,10 @@ button {
     footer {
         position: relative;
         top: 528px;
+    }
+
+    main {
+        flex: 0 0 60%;
     }
 
     form {
