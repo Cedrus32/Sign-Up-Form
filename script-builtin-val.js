@@ -36,8 +36,6 @@ function checkName(nameSpace) {
 
 // ---- EMAIL ---- //
 
-//todo add custom regex
-
 let email = document.getElementById('email');
 let emailError = document.getElementById('email-error');
 let emailLabel = document.querySelector('label.email.required');
