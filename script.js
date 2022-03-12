@@ -197,24 +197,31 @@ function checkPW(password) {
     }
 }
 
-let pwView = document.querySelector('span.view-unview');
-let viewImage = document.querySelector('span img');
-console.log(pwView);
+let pwViewSpan = document.querySelectorAll('span.view-unview');
+let viewImage = document.querySelectorAll('span img');
+console.log(pwViewSpan);
 console.log(viewImage);
 function pwToggle() {
     if (pw1.type === 'password') {
         passwords.forEach(password => password.type = 'text');
-        viewImage.setAttribute('src', './assets/visible.png');
-        viewImage.classList = 'visible';
-
-        console.log(passwords.forEach(password => password.type));
-        console.log(viewImage);
-        console.log(viewImage.classList);
-
+        viewImage.forEach(image => image.setAttribute('src', './assets/visible.png'));
+        viewImage.forEach(image => () => {
+            if (image.id === 'img-pw1') {
+                image.classList = 'visible pw1';
+            } else if (image.id === 'img-pw2') {
+                image.classList = 'visible pw2';
+            }
+        });
     } else if (pw1.type === 'text') {
         passwords.forEach(password => password.type = 'password');
-        viewImage.setAttribute('src', './assets/invisible.png');
-        viewImage.classList = 'invisible';
+        viewImage.forEach(image => image.setAttribute('src', './assets/invisible.png'));
+        viewImage.forEach(image => () => {
+            if (image.id === 'img-pw1') {
+                image.classList = 'invisible pw1';
+            } else if (image.id === 'img-pw2') {
+                image.classList = 'invisible pw2';
+            }
+        });
     }
 }
 
@@ -259,4 +266,4 @@ passwords.forEach(password => password.addEventListener('focus', () => {
     });
 }));
 
-pwView.addEventListener('click', pwToggle);
+pwViewSpan.forEach(viewSpan => viewSpan.addEventListener('click', pwToggle));
