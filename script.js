@@ -199,6 +199,27 @@ function checkPW(password) {
     }
 }
 
+let pwView = document.querySelector('span.view-unview');
+let viewImage = document.querySelector('span img');
+console.log(pwView);
+console.log(viewImage);
+function pwToggle() {
+    if (pw1.type === 'password') {
+        passwords.forEach(password => password.type = 'text');
+        viewImage.setAttribute('src', './assets/visible.png');
+        viewImage.classList = 'visible';
+
+        console.log(passwords.forEach(password => password.type));
+        console.log(viewImage);
+        console.log(viewImage.classList);
+
+    } else if (pw1.type === 'text') {
+        passwords.forEach(password => password.type = 'password');
+        viewImage.setAttribute('src', './assets/invisible.png');
+        viewImage.classList = 'invisible';
+    }
+}
+
 
 // --------------- //
 // LISTENER EVENTS //
@@ -239,3 +260,5 @@ passwords.forEach(password => password.addEventListener('focus', () => {
         checkPW(password);
     });
 }));
+
+pwView.addEventListener('click', pwToggle);
