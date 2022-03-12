@@ -238,14 +238,24 @@ img {
     width: 17px; height: auto;
 }
 
-.visible {
+.visible.pw1 {
     position: absolute;
     top: 2px; left: 180px;
 }
 
-.invisible {
+.invisible.pw1 {
     position: absolute;
     top: 2px; left: 180px;
+}
+
+.visible.pw2 {
+    position: absolute;
+    top: 2px; left: 180px;
+}
+
+.invisible.pw2 {
+    position: absolute;
+    top: 2px; left: 126px;
 }
 
 /* -------------- */

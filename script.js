@@ -126,7 +126,6 @@ function checkPhone(part) {
 
 // ---- PASSWORD ---- //
 
-//todo add option to view password
 //todo add popup to check pw meets criteria (8-15, appropriate characters)
 
 let passwords = document.querySelectorAll('fieldset.password input');
@@ -178,7 +177,6 @@ function checkPW(password) {
     }
 
     // confirm pw
-
     if (pw1.value === pw2.value) {
         if (pws[1] === false) {
             pw2Error.textContent = '* Please confirm valid password';
