@@ -229,6 +229,21 @@ input.correct {
     color: #E933BB;
 }
 
+img {
+    padding: 0px; margin: 0px;
+    width: 17px; height: auto;
+}
+
+.visible {
+    position: absolute;
+    top: 2px; left: 180px;
+}
+
+.invisible {
+    position: absolute;
+    top: 2px; left: 180px;
+}
+
 /* -------------- */
 /* ACTION STYLING */
 /* -------------- */
