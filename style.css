@@ -221,7 +221,7 @@ input.correct {
 }
 
 .error-box {
-    padding: 0px; margin: 0px;
+    padding: 3px 0px 0px; margin: 0px;
     width: 100%;
     position: absolute;
     top: 52px;
