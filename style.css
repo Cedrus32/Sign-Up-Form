@@ -229,6 +229,10 @@ input.correct {
     color: #E933BB;
 }
 
+span.view-unview {
+    padding: 0px; margin: 0px;
+}
+
 img {
     padding: 0px; margin: 0px;
     width: 17px; height: auto;
