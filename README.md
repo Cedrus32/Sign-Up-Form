@@ -13,3 +13,5 @@ One of the biggest challenges in this project was handling the logic to check va
 Another challenge was learning regular expressions (coming from no prior experience) to create robust pattern validation without excluding otherwise valid user input, particularly with names and email addresses.
 
 Note: I realize this form is by no means secure and ready to be implemented on a client website. Rather, this project served as an exercise in the theory and practice of form validation.
+
+** Thanks to <a href="https://www.flaticon.com/authors/google">Google</a> for password view/hide icons.
